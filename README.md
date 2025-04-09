@@ -1,8 +1,8 @@
 infiniteTests.M2
 ===============
 
-The aim of this package is to provide a framework for random testing of algorithms implemented in Macaulay2,
-that means observe bugs by throwing random input at a testee function.
+The aim of this package is to provide a framework for random testing of algorithms implemented in Macaulay2.
+That it detects bugs by throwing random input at a testee function.
 The framework may also be used to search for examples with interesting properties.
 The intention of implementing a framework is to remove the burden from the user of writing boilerplate code.
 
@@ -25,8 +25,8 @@ Design draft:
   the test driver should usually have following parameters:
      
      - random input generator function (with no parameters)
-     - testee (takes the output of the random input generator from above)
-     - result check function (which takes the input and the testee output as parameters)
+     - resultCalculator (takes the output of the random input generator from above)
+     - result check function (which takes the input and the resultCalculator output as parameters)
      - processFailingExample() which takes everything from above and
           -  e.g. generates a rerunnable .m2 file from it 
           -  or adds the failing example into a list /into a database
@@ -34,7 +34,25 @@ Design draft:
      
 
 
-Quickstart:
+NEW EXAMPLE:
+
+run
+
+`M2    InfiniteTests/Examples/minimalRunExample.m2`
+
+to understand how it works, look at 
+ `InfiniteTests/Examples/minimalRunExample.m2`
+and at
+  `input/gbZ/simpleTestGB.config.00`
+  
+more detailed documentation will follow in short
+
+Remaining goals:
+
+search for in some way minimal failing examples
+
+
+deprecated Quickstart:
 
 1. create a M2 test routine called `runTests()` and a separate test config file with user defined test options used in the test routine 
 ( see `tests/testGB.m2` and `input/gbZ/testGB.config.00` for example)
@@ -58,7 +76,7 @@ ${9} = idx for the test; do not use same config file with same idx
 
 The observed potential bugs will be stored in the 'log/$templateFileName/bugs/' subfolder and will have a file ending '.bug'
 
-Example:
+deprecated Example:
 ----------------------
 
 #### tests/testGB.m2
